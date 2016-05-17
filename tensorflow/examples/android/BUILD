@@ -9,6 +9,27 @@ load("//tensorflow:tensorflow.bzl", "tf_copts")
 
 exports_files(["LICENSE"])
 
+# run the following command to get android library
+# bazel build -c opt //tensorflow/examples/android:libtensorflow.so --crosstool_top=//external:android/crosstool --cpu=armeabi-v7a --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+cc_binary(
+    name = "libtensorflow.so",
+    srcs = [":libpthread.so"],
+    copts = tf_copts(),
+    linkopts = [
+        "-landroid",
+        "-ljnigraphics",
+        "-llog",
+        "-lm",
+    ],
+    linkshared = 1,
+    linkstatic = 1,
+    tags = [
+        "manual",
+        "notap",
+    ],
+    deps = ["//tensorflow/core:android_tensorflow_lib"],
+)
+
 cc_binary(
     name = "libtensorflow_demo.so",
     srcs = glob([
