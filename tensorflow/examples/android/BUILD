@@ -20,6 +20,8 @@ cc_binary(
         "-ljnigraphics",
         "-llog",
         "-lm",
+        "-s",
+        "-Wl,--icf=all",  # Identical Code Folding
     ],
     linkshared = 1,
     linkstatic = 1,
