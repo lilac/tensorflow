@@ -42,7 +42,10 @@ py_library(
     name = "platform",
     srcs = glob(["platform/*.py"]),
     srcs_version = "PY2AND3",
-    deps = ["//tensorflow/core:protos_all_py"],
+    deps = [
+        ":pywrap_tensorflow",
+        "//tensorflow/core:protos_all_py",
+    ],
 )
 
 py_library(
@@ -599,6 +602,7 @@ tf_gen_op_wrapper_py(
         "ReaderNumRecordsProduced",
         "ReaderNumWorkUnitsCompleted",
         "ReaderRead",
+        "ReaderReadUpTo",
         "ReaderReset",
         "ReaderRestoreState",
         "ReaderSerializeState",
@@ -1104,6 +1108,7 @@ medium_kernel_test_list = glob([
     "kernel_tests/concat_op_test.py",
     "kernel_tests/division_future_test.py",
     "kernel_tests/fft_ops_test.py",
+    "kernel_tests/pooling_ops_test.py",
     "kernel_tests/rnn_test.py",
     "kernel_tests/scatter_ops_test.py",
     "kernel_tests/seq2seq_test.py",

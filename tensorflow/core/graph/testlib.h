@@ -1,4 +1,4 @@
-/* Copyright 2015 Google Inc. All Rights Reserved.
+/* Copyright 2015 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -168,6 +168,9 @@ Node* GetSessionTensor(Graph* g, Node* in);
 // dimension to concatenate on, and the tensors to concatenate are
 // given in "tensors".
 Node* Concat(Graph* g, Node* concat_dim, gtl::ArraySlice<Node*> tensors);
+
+// Add a Relu node in "g".
+Node* Relu(Graph* g, Node* in);
 
 }  // end namespace graph
 }  // end namespace test
